@@ -1,0 +1,23 @@
+--- docker-entrypoint.sh	2023-04-16 20:57:54
++++ docker-entrypoint.new.sh	2023-04-16 20:56:58
+@@ -242,7 +242,7 @@
+ 	if [ -n "$MYSQL_DATABASE" ]; then
+ 		set -- --database="$MYSQL_DATABASE" "$@"
+ 	fi
+-	mariadb --protocol=socket -uroot -hlocalhost --socket="${SOCKET}" "$@"
++    mysql --protocol=socket -uroot -hlocalhost --socket="${SOCKET}" $SSL "$@"
+ }
+ 
+ # Execute sql script, passed via stdin
+@@ -486,6 +486,11 @@
+ 	# skip setup if they aren't running mysqld or want an option that stops mysqld
+ 	if [ "$1" = 'mariadbd' ] || [ "$1" = 'mysqld' ] && ! _mysql_want_help "$@"; then
+ 		mysql_note "Entrypoint script for MariaDB Server ${MARIADB_VERSION} started."
++
++        if [ -f "/etc/mysql/conf.d/ssl.cnf" ]; then
++            mysql_note "SSL config detected"
++            export SSL="--ssl-ca=/etc/mysql/certs/ca.pem"
++        fi
+ 
+ 		mysql_check_config "$@"
+ 		# Load various environment variables
