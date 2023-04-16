@@ -37,8 +37,24 @@ A command line is provided for convenience:
 docker build --tag="mariadbssl" . && docker run -d -v"certs:/etc/mysql/certs" -v'dbs:/var/lib/mysql' -p"3306:3306/tcp" --name=mariadbssl mariadbssl
 ```
 
-Hope this repository is useful for you.
+## Verify that SSL (TLS) is turned on
 
+Try connecting without SSL:
+
+```
+mysql -h127.0.0.1 -uroot -proot --ssl-mode=DISABLED
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1045 (28000): Access denied for user 'arc_iasc'@'172.17.0.1' (using password: YES)
+```
+
+Check the server variables when logged in:
+
+```
+$ mysql -h127.0.0.1 -uroot -proot --ssl-ca=ca.pem
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+mysql> SHOW VARIABLES LIKE '%ssl%';
+```
 ## License
 
 Public domain, 2023.
+Hope this repository is useful for you.
