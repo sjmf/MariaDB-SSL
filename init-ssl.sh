@@ -2,6 +2,7 @@
 
 cd /etc/mysql/certs
 
+# https://serverfault.com/questions/622317/mysql-ssl-bad-other-signature-confirmation/1128792
 # Generate a CA key and certificate with SHA1 digest
 openssl genrsa 2048 > ca-key.pem
 openssl req -sha256 -new -x509 -nodes -days 3650 -key ca-key.pem \
