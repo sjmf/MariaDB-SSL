@@ -5,7 +5,7 @@
  		set -- --database="$MYSQL_DATABASE" "$@"
  	fi
 -	mariadb --protocol=socket -uroot -hlocalhost --socket="${SOCKET}" "$@"
-+	mysql --protocol=socket -uroot -hlocalhost --socket="${SOCKET}" $SSL "$@"
++	mariadb --protocol=socket -uroot -hlocalhost --socket="${SOCKET}" $SSL "$@"
  }
  
  # Execute sql script, passed via stdin
