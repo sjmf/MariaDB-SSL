@@ -19,7 +19,7 @@ RUN mkdir certs && \
 COPY ssl.cnf              /etc/mysql/conf.d/
 COPY init-ssl.sh          /docker-entrypoint-initdb.d/
 COPY speak-ca.sh          /docker-entrypoint-initdb.d/
-COPY iasc.sql             /docker-entrypoint-initdb.d/
+COPY create_user.sql      /docker-entrypoint-initdb.d/
 
 # Alas we have to run this first as MariaDB tests the server before running it
 RUN  bash -c /docker-entrypoint-initdb.d/init-ssl.sh
