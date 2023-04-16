@@ -1,0 +1,18 @@
+[client-mariadb]
+ssl_cert = /etc/mysql/certs/client-cert.pem
+ssl_key = /etc/mysql/certs/client-key.pem
+
+#port=3306
+#socket=/run/mysqld/mysqld.sock
+
+[mariadb]
+ssl_ca = /etc/mysql/certs/ca-cert.pem
+ssl_cert = /etc/mysql/certs/server-cert.pem
+ssl_key = /etc/mysql/certs/server-key.pem
+
+require_secure_transport=ON
+
+#port=3306
+#socket=/run/mysqld/mysqld.sock
+#key_buffer_size=16M
+#max_allowed_packet=8M
