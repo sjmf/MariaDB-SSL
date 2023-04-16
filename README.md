@@ -53,6 +53,38 @@ Check the server variables when logged in:
 $ mysql -h127.0.0.1 -uroot -proot --ssl-ca=ca.pem
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 mysql> SHOW VARIABLES LIKE '%ssl%';
++---------------------+----------------------------------+
+| Variable_name       | Value                            |
++---------------------+----------------------------------+
+| have_openssl        | YES                              |
+| have_ssl            | YES                              |
+| ssl_ca              | /etc/mysql/certs/ca-cert.pem     |
+| ssl_capath          |                                  |
+| ssl_cert            | /etc/mysql/certs/server-cert.pem |
+| ssl_cipher          |                                  |
+| ssl_crl             |                                  |
+| ssl_crlpath         |                                  |
+| ssl_key             | /etc/mysql/certs/server-key.pem  |
+| version_ssl_library | OpenSSL 3.0.2 15 Mar 2022        |
++---------------------+----------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> SHOW SESSION STATUS LIKE 'ssl_version';
++---------------+---------+
+| Variable_name | Value   |
++---------------+---------+
+| Ssl_version   | TLSv1.3 |
++---------------+---------+
+1 row in set (0.01 sec)
+
+mysql> SHOW SESSION STATUS LIKE 'ssl_cipher';
++---------------+------------------------+
+| Variable_name | Value                  |
++---------------+------------------------+
+| Ssl_cipher    | TLS_AES_256_GCM_SHA384 |
++---------------+------------------------+
+1 row in set (0.00 sec)
+
 ```
 ## License
 
