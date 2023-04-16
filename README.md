@@ -12,7 +12,8 @@ Further, we have to patch the `docker-entrypoint.sh` script too, because if we c
 runtime, that means that this script will try to connect to an ssl-enabled server without ssl, and
 will fail to complete initial setup.
 
-The script `init-ssl.sh` generate self-signed certificates with a sensible set of default values.
+The script `init-ssl.sh` generates self-signed certificates with a sensible set of default values.
+Finally, the `create_user.sql` script creates a user with `REQUIRE SSL` turned on.
 
 ## How to use it
 
