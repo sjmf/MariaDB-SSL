@@ -26,7 +26,7 @@ mysql -h127.0.0.1 -uroot -proot --ssl-ca=ca.pem
 You can grab the `ca.pem` from the running server using:
 
 ```
-docker run -it mariadbssl cat /etc/mysql/certs/ca.pem > ca.pem
+docker exec -it mariadbssl cat /etc/mysql/certs/ca.pem > ca.pem
 ```
 
 ## How to run the server
