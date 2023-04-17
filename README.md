@@ -1,4 +1,4 @@
-# MariaDB with Self-Signed SSL
+# MariaDB with Self-Signed SSL, under Docker
 
 A collection of scripts to create a docker container for MariaDB using self-signed ssl certificates.
 
